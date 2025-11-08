@@ -79,7 +79,7 @@ async def add_product_ingredietns(message: Message, state: FSMContext):
     await bot.download(file, destination=dest_path)
 
     # 5) Statega saqlash 
-    await state.update_data(photo=str(dest_path.relative_to(base_dir)))
+    await state.update_data(photo=filename)
     await message.answer("✅ Rasm saqlandi.")
     await message.answer("Narxini yuboring:")
     await state.set_state(AddProductStates.price)

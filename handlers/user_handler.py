@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
 from aiogram import F
@@ -70,8 +73,9 @@ async def choose_product_handler(message: Message, state: FSMContext):
         data = baza.select_product_by_name(product_name)
         p_id, name, weight, ingredients, photo, price, category_id = data
         text = f"""{name}\nvazni{weight} gr\ntarkibi: {ingredients}\nnarxi: {price} so'm"""
-        file = FSInputFile(path=photo)
-        print(f"{data}=")
+        photo_path = os.path.join('images', 'products', photo)
+        print(photo_path)
+        file = FSInputFile(path=photo_path)
         user_id = message.from_user.id
         data = {
                 'p_id': p_id,
