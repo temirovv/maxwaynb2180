@@ -71,6 +71,7 @@ async def choose_product_handler(message: Message, state: FSMContext):
         p_id, name, weight, ingredients, photo, price, category_id = data
         text = f"""{name}\nvazni{weight} gr\ntarkibi: {ingredients}\nnarxi: {price} so'm"""
         file = FSInputFile(path=photo)
+        print(f"{data}=")
         user_id = message.from_user.id
         data = {
                 'p_id': p_id,
